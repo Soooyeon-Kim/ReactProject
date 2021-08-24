@@ -1,38 +1,14 @@
-import React, { useEffect } from 'react'
-import axios from 'axios';
-import { withRouter } from 'react-router-dom'; 
+import React from 'react'
 
-function LandingPage(props) {
-
-    useEffect(() => {
-        axios.get('/api/hello')
-            .then(response=> { console.log(response.data)})
-    }, [])
-
-    
-    const onClickHandler = () => {
-        axios.get(`/api/users/logout`)
-            .then(response => {
-                if (response.data.success) {
-                    props.history.push("/login")
-                } else {
-                    alert('로그아웃에 실패하였습니다.')
-                }
-            })
-    }
-
+function LandingPage() {
     return (
-        <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center'
-            , width: '100%', height: '100vh'
-        }}>
-            <h2>시작 페이지</h2>
-            
-            <button onClick={onClickHandler}>
-                로그아웃
-            </button>
-
-        </div>
+        <>
+            <div className="app">
+                <span style={{ fontSize: '2rem' }}>Hello Elice!</span>
+            </div>
+            <div style={{ float: 'right', fontSize: "25px" }}>Elice Portfolio service project </div>
+        </>
     )
 }
-export default withRouter(LandingPage)
+
+export default LandingPage
