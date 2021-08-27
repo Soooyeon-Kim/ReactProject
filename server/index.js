@@ -14,8 +14,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/users', require('./routes/users'));
+app.use('/api/profile', require('./routes/profile'));
 
 
+//use this to show the image you have in node js server to client (react js)
+//https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
+//app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
+
+  // Set static folder   
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, 
@@ -45,6 +52,8 @@ mongoose.connect(config.mongoURI,
     })
   })
 })
+
+
 
 // 로그인
 app.post('/api/users/login', (req, res) => {
@@ -107,13 +116,22 @@ app.get('/api/users/logout', auth, (req, res) => {
       })
     })
 
-    
+// Serve static assets if in production
+/*
+if (process.env.NODE_ENV === "production") {
+
+  // Set static folder   
+  // All the javascript and css files will be read and served from this folder
+  app.use(express.static("client/build"));
+
+  // index.html for all page routes    html or routing and naviagtion
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}    
   
-    //use this to show the image you have in node js server to client (react js)
-    //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-    app.use('/uploads', express.static('uploads'));
 
-
+*/
 
     
 app.listen(port, () => console.log(`Sever running at ${port}!`)) 

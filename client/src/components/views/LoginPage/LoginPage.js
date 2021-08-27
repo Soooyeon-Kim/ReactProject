@@ -136,10 +136,10 @@ function LoginPage(props) {
                   </a>
                 </Form.Item>
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%', backgroundColor: "#ADAFFF", borderColor:"#ADAFFF" }} disabled={isSubmitting} onSubmit={handleSubmit}>
                     Log in
                 </Button>
-                Or <a href="/register">register now!</a>
+                Or <a href="/register" style= {{color: "#ADAFFF"}}>register now!</a>
               </Form.Item>
             </form>
           </div>

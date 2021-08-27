@@ -3,10 +3,10 @@ import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
 import { Drawer, Button } from 'antd';
 import './Sections/Navbar.css';
-import Icon from '@ant-design/icons';
+import { AlignRightOutlined } from '@ant-design/icons';
 
 function NavBar() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   const showDrawer = () => {
     setVisible(true)
@@ -17,7 +17,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
+    <nav className="menu" style={{ position: 'relative', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
         <a style= {{color: "#adafff"}} href="/">PORTFOLIO</a>
       </div>
@@ -28,24 +28,37 @@ function NavBar() {
         <div className="menu_rigth">
           <RightMenu mode="horizontal" />
         </div>
-        <Button
-          className="menu__mobile-button"
-          type="primary"
-          onClick={showDrawer}
-        >
-          <Icon type="align-right" />
-        </Button>
+        <div>
+          <span style={{top:"17px", right: "50px", position:"absolute"}}>
+        <Button type="primary" onClick={ showDrawer} style={{backgroundColor: "#ADAFFF", borderColor: "#ADAFFF", justifyContent:"right"}}>
+        Open
+        </Button></span>
         <Drawer
+        title="another page"
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        visible={visible}
+        >
+        <LeftMenu mode="inline" />
+        <RightMenu mode="inline" />
+        </Drawer>
+      </div>
+     {/* <Button
+        className="menu__mobile-button"
+        type="primary"
+        onClick={showDrawer}>Button</Button>
+      <Drawer
           title="Basic Drawer"
           placement="right"
           className="menu_drawer"
           closable={false}
           onClose={onClose}
           visible={visible}
-        >
-          <LeftMenu mode="inline" />
-          <RightMenu mode="inline" />
-        </Drawer>
+        > 
+        <LeftMenu mode="inline" />
+        <RightMenu mode="inline" />
+      </Drawer>   */}
       </div>
     </nav>
   )

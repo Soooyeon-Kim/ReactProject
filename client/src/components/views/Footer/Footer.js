@@ -9,7 +9,7 @@ function Footer() {
             flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center', fontSize:'1rem'
         }}>
-           <p> Welcome <HeartTwoTone twoToneColor="#eb2f96" /></p>
+           <p> Record your glorious portfolio <HeartTwoTone twoToneColor="#eb2f96" /></p>
         </div>
     )
 }

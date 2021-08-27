@@ -89,8 +89,6 @@ function RegisterPage(props) {
           onSubmit
         } = props;
       //
-
-
         return (
           <div className="app">
             <h2>Sign up</h2>
@@ -174,7 +172,7 @@ function RegisterPage(props) {
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"
                   type="password"
-                  value={values.confirmPassword}
+                  value={props.values.confirmPassword}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   className={
